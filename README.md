@@ -1,13 +1,32 @@
 # gradle-publish-script 
-A gradle script that should be applied to every gradle project that should be able to publish to Sonatype Central.
+A re-usable Gradle script that should be applied to every gradle project that should be able to publish to Sonatype Central.
+Adds commonly needed functionality, like:
+* Build type: Local / Snapshot / Release
+* Confirmation before publish
 
-## Use
+## Apply:
 In you main ```build.gradle```:
 
 ```
 subprojects {
     apply from: 'https://raw.githubusercontent.com/ykrasik/gradle-publish-script/master/publish.gradle'
 }
+```
+
+## Use:
+Publish local:
+```
+gradlew uploadArchives
+```
+
+Publish snapshot:
+```
+gradlew uploadArchives -Psnapshot
+```
+
+Publish release:
+```
+gradlew uploadArchives -Prelease
 ```
 
 ### Configure
@@ -37,4 +56,10 @@ pomLicenseDistribution = repo
 pomDeveloperId = ykrasik
 pomDeveloperName = Yevgeny Krasik
 pomDeveloperEmail = ykrasik@gmail.com
+```
+
+Any property can be overridden from the command line with -P{property}={value}.
+So to publish with a different version then what is specified in gradle.properties:
+```
+gradlew uploadArchives -Pversion=0.1.1
 ```
