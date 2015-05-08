@@ -6,7 +6,7 @@ In you main ```build.gradle```:
 
 ```
 subprojects {
-    apply from: 'https://github.com/ykrasik/gradle-publish-script/publish.gradle'
+    apply from: 'https://raw.githubusercontent.com/ykrasik/gradle-publish-script/master/publish.gradle'
 }
 ```
 
